@@ -1,9 +1,14 @@
 #include <linux/module.h>
 #include <linux/init.h>
+#include <linux/delay.h> // msleep(), msleep_interruptible(), etc
+
+#include "hellokernel_ops.h"
 
 static int __init hellokernel_init(void)
 {
 	pr_info("Hello kernel. I'm initializer.\n");
+	msleep_interruptible(3000);
+	pr_info("3 + 7 = %d\n", hellokernel_add(3, 7));
 	return 0;
 }
 
