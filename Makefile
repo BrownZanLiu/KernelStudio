@@ -23,6 +23,10 @@ hellokernel-y :=  hellokernel_main.o hellokernel_ops.o
 #obj-m += zanfs.o
 #obj-$(CONFIG_ZANFS) += zanfs.o  # Could be configured by /boot/config-$(uname -r)
 
+### module: kernel checker###
+obj-m += kexplorer.o
+kexplorer-y := kernel_explorer_main.o
+
 ### modules under some subdir ###
 # Go into some_subdir and look for any Kbuild or Makefile to do work recursively.
 # obj-<X> += some_subdir/

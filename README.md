@@ -84,12 +84,16 @@ sed -ri '/CONFIG_SYSTEM_TRUSTED_KEYS/s/=.+/=""/g' <YourRootDir4Building>/.config
 4.1) add extra version info: sed  -i 's/^EXTRAVERSION.*/EXTRAVERSION = -custom/'  Makefile
 4.2) check kernel version: make O=<YourRootDir4Building> kernelversion
 4.3) do compiling: make O=<YourRootDir4Building> -j $(nproc)
-4.4) output
-4.4.1) end product
-<YourRootDir4Building>/arch/x86/boot/bzImage
-4.4.2) install modules[default path: /lib/modules/<KernelVersion>]
+5) install
+5.0) install modules[default path: /lib/modules/<KernelVersion>]
 make O=<YourRootDir4Building> modules_install
 make O=<YourRootDir4Building> INSTALL_MOD_STRIP=1 modules_install
+5.1) install kernel
+cp <YourRootDir4Building>/arch/x86/boot/bzImage /boot/vmlinuz-<KernelVersion>
+// debug version
+cp <YourRootDir4Building>/arch/x86/boot/vmlinux.bin /boot/vmlinux-<KernelVersion>
+// symbolic table
+cp <YourRootDir4Building>/System.map /boot/System.map-<KernelVersion>
 
 # system configurations
 Load module: CONFIG_MODULES=y
