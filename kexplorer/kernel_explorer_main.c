@@ -1,6 +1,6 @@
-#include <linux/init.h>
+#include <linux/init.h>  // __init, __exit
 #include <linux/kernel.h>
-#include <linux/module.h>
+#include <linux/module.h>  // MODULE_*(), module_init(), module_exit()
 
 MODULE_AUTHOR("Brown LiuZan<brown.liuzan@outlook.com");
 MODULE_DESCRIPTION("Utility to check kernel status.");
