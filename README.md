@@ -1,7 +1,7 @@
 Kernel module development and kernel usage exercises.
 
-# kernel building 
-## Rocky Linux 9 
+# kernel building
+## Rocky Linux 9
 Reference: https://docs.rockylinux.org/9/guides/custom-linux-kernel/
 1) Installing prerequisite tools and libraries
 1.1) Update repo meta
@@ -11,7 +11,7 @@ dnf -y groupinstall 'Development Tools'
 1.3) Install other header files
 dnf -y install ncurses-devel openssl-devel elfutils-libelf-devel python3
 1.4) Enable crb(aka Powertools) repo
-dnf config-manager --set-enabled crb 
+dnf config-manager --set-enabled crb
 dnf makecache
 1.5) Install dwarves package
 dnf -y install dwarves
@@ -52,7 +52,7 @@ URL Roots:
 https://www.kernel.org/pub/linux/kernel/v6.x
 https://www.kernel.org/pub/linux/kernel/v5.x
 wget -c https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.14.21.tar.xz
-2.1.2) Rocky 
+2.1.2) Rocky
 https://download.rockylinux.org/pub/rocky/9/BaseOS/source/tree/Packages/k/
 wget -c https://download.rockylinux.org/pub/rocky/9/BaseOS/source/tree/Packages/k/kernel-5.14.0-570.52.1.el9_6.src.rpm
 2.2) Install Rocky Kernel source by shell
@@ -66,7 +66,7 @@ dnf download --source kernel
 rpm -i kernel-*.src.rpm
 2.2.5) Prepare the full source tree the way the spec expects
 dnf install -y rpmdevtools
-rpmbuild -bp ./rpmbuild/SPECS/kernel.spec 
+rpmbuild -bp ./rpmbuild/SPECS/kernel.spec
 2.2.6) Untar kernel source file tarball under rpmbuild/SOURCES
 3) config the kernel
 3.1) workspace management with make
@@ -94,6 +94,20 @@ cp <YourRootDir4Building>/arch/x86/boot/bzImage /boot/vmlinuz-<KernelVersion>
 cp <YourRootDir4Building>/arch/x86/boot/vmlinux.bin /boot/vmlinux-<KernelVersion>
 // symbolic table
 cp <YourRootDir4Building>/System.map /boot/System.map-<KernelVersion>
+6) install more packages for better Makefile template from "Linux Kernel Programming"
+6.1) install indent
+dnf install -y indent
+6.2) install cppcheck
+dnf install -y cppcheck
+6.3) install sparse
+dnf install -y sparse
+6.4) install flawfinder # flawfinder released by snaps, a package platform
+dnf install -y epel-release
+dnf install -y snapd
+ln -s /var/lib/snapd/snap /snap
+systemctl enable snapd
+systemctl start snapd
+snap install flawfinder
 
 # system configurations
 Load module: CONFIG_MODULES=y
