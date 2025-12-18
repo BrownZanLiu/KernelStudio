@@ -120,3 +120,8 @@ Related files:
 - Kbuild or Makefile, makefile name of kbuild system of linux kernel
 Kbuild has higher priority over Makefile.
 
+# Usefual commands
+1) check linux kernel tags
+git log --date-order --graph --tags --simplify-by-decoration --pretty=format:'%ai %h %d'
+2) check linux kernel release info
+curl -L https://www.kernel.org/finger_banner
