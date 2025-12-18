@@ -120,6 +120,31 @@ Related files:
 - Kbuild or Makefile, makefile name of kbuild system of linux kernel
 Kbuild has higher priority over Makefile.
 
+# Cross building
+## rocky linux
+1) install crossbuild tools: cross-gcc-common, cross-binutils-common, gcc-<ARCH_NAME>-linux-gnu, binutils-<ARCH_NAME>-linux-gnu
+dnf install gcc-arm-linux-gnu
+dnf install gcc-aarch64-linux-gnu
+dnf install gcc-mips-linux-gnu
+dnf install gcc-powerpc-linux-gnu
+apt install crossbuild-essential-amd64
+apt install crossbuild-essential-i386
+apt install crossbuild-essential-arm64
+apt install crossbuild-essential-armel
+apt install crossbuild-essential-armhf
+apt install crossbuild-essential-mips
+apt install crossbuild-essential-mipsel
+apt install crossbuild-essential-mipsr6
+apt install crossbuild-essential-mipsr6el
+apt install crossbuild-essential-mips64
+apt install crossbuild-essential-mips64el
+apt install crossbuild-essential-mips64r6
+apt install crossbuild-essential-mips64r6el
+apt install crossbuild-essential-powerpc
+apt install crossbuild-essential-ppc64el
+apt install crossbuild-essential-riscv64
+apt install crossbuild-essential-s390x
+
 # Usefual commands
 1) check linux kernel tags
 git log --date-order --graph --tags --simplify-by-decoration --pretty=format:'%ai %h %d'
